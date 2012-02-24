@@ -1,0 +1,10 @@
+#!/bin/sh
+
+export PERSONAL="$HOME"/personal
+
+if [ -r "$PERSONAL"/config/shell/local/always ]
+then
+    source "$PERSONAL"/config/shell/local/always
+fi
+
+source "$PERSONAL"/config/shell/always-paths

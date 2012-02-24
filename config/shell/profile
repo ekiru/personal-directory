@@ -1,0 +1,4 @@
+#!/bin/sh
+
+source "$HOME"/personal/config/shell/always
+source "$HOME"/personal/config/shell/login

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export PLAN9="$PERSONAL/applications/plan9"
+export PATH="$PATH":"$PLAN9/bin"
