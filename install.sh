@@ -7,7 +7,7 @@ EINVALIDRESPONSE=4
 
 export PERSONAL="$HOME/personal"
 
-mv-and-edit() {
+mv_and_edit() {
 	if [ $# -ne 2 ]
 	then
 		echo >&2 "Internal error in function $0: expected 2 arguments"
@@ -23,16 +23,17 @@ echo "Installing config files."
 echo "	Installing .profile"
 if [ -e "$HOME/.profile" ]
 then
-	echo "~/.profile already exists: (o)verwrite, use as 'config/shell/local/(a)lways', use as 'config/shell/local/(l)ogin', or (q)uit installing?"
-         case "`read`" in
+	echo '~/.profile already exists: (o)verwrite, use as "config/shell/local/(a)lways", use as "config/shell/local/(l)ogin", or (q)uit installing?'
+	read response
+	case $response in
 		[oO])
 			rm "$HOME/.profile"
 			;;
 		[aA])
-			mv-and-edit "$HOME/.profile" "$PERSONAL/config/shell/local/always
+			mv_and_edit "$HOME/.profile" "$PERSONAL/config/shell/local/always"
 			;;
 		[lL])
-			mv-and-edit "$HOME/.profile" "$PERSONAL/config/shell/local/login"
+			mv_and_edit "$HOME/.profile" "$PERSONAL/config/shell/local/login"
 			;;
 		[qQ])
 			exit $EUSERABORT
@@ -49,16 +50,17 @@ ln -s "$PERSONAL/config/shell/login" "$HOME/.profile"
 echo "	Installing .bashrc"
 if [ -e "$HOME/.bashrc" ]
 then
-	echo "~/.bashrc already exists: (o)verwrite, use as 'config/shell/local/(a)lways', use as 'config/shell/local/(n)onlogin', or (q)uit installing?"
-         case "`read`" in
+	echo '~/.bashrc already exists: (o)verwrite, use as "config/shell/local/(a)lways", use as "config/shell/local/(n)onlogin", or (q)uit installing?'
+	read response
+	case $response in
 		[oO])
 			rm "$HOME/.bashrc"
 			;;
 		[aA])
-			mv-and-edit "$HOME/.bashrc" "$PERSONAL/config/shell/local/always
+			mv_and_edit "$HOME/.bashrc" "$PERSONAL/config/shell/local/always"
 			;;
 		[lL])
-			mv-and-edit "$HOME/.bashrc" "$PERSONAL/config/shell/local/nonlogin"
+			mv_and_edit "$HOME/.bashrc" "$PERSONAL/config/shell/local/nonlogin"
 			;;
 		[qQ])
 			exit $EUSERABORT
@@ -74,7 +76,7 @@ fi
 ln -s "$PERSONAL/config/shell/login" "$HOME/.bashrc"
 
 
-
+source "$PERSONAL/config/shell/always-paths"
 echo "Installing software."
 if cd "$PERSONAL/applications/installation" && sh -c make
 then
