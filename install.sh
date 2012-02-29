@@ -76,6 +76,27 @@ fi
 ln -s "$PERSONAL/config/shell/login" "$HOME/.bashrc"
 
 
+echo "    Installing .vimrc"
+if [ -e "$HOME/.vimrc" ]
+then
+    echo '~/.vimrc already exists: (o)verwrite, or (q)uit installing?'
+    read response
+    case $response in
+        [oO])
+            rm "$HOME/.vimrc"
+            ;;
+        [qQ])
+            exit $EUSERABORT
+            ;;
+        *)
+            echo "Unrecognized response" >&2
+            exit $EINVALIDRESPONSE
+            ;;
+    esac
+fi
+
+ln -s "$PERSONAL/vim/vimrc" "$HOME/.vimrc"
+
 source "$PERSONAL/config/shell/always-paths"
 echo "Installing software."
 if cd "$PERSONAL/applications/installation" && sh -c make
