@@ -45,7 +45,7 @@ then
     esac
             
 fi
-ln -s "$PERSONAL/config/shell/login" "$HOME/.profile"
+ln -s "$PERSONAL/config/shell/profile" "$HOME/.profile"
 
 echo "    Installing .bashrc"
 if [ -e "$HOME/.bashrc" ]
@@ -73,7 +73,7 @@ then
             
 fi
 
-ln -s "$PERSONAL/config/shell/login" "$HOME/.bashrc"
+ln -s "$PERSONAL/config/shell/shrc" "$HOME/.bashrc"
 
 
 echo "    Installing .vimrc"
@@ -95,7 +95,7 @@ then
     esac
 fi
 
-ln -s "$PERSONAL/vim/vimrc" "$HOME/.vimrc"
+ln -s "$PERSONAL/config/vim/vimrc" "$HOME/.vimrc"
 
 source "$PERSONAL/config/shell/always-paths"
 echo "Installing software."
