@@ -1,4 +1,6 @@
 #!/bin/sh
 
-source "$HOME"/personal/config/shell/always
-source "$HOME"/personal/config/shell/nonlogin
+. "$HOME"/personal/config/shell/always
+. "$HOME"/personal/config/shell/nonlogin
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

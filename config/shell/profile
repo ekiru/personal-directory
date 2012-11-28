@@ -1,4 +1,4 @@
 #!/bin/sh
 
-source "$HOME"/personal/config/shell/always
-source "$HOME"/personal/config/shell/login
+. "$HOME"/personal/config/shell/always
+. "$HOME"/personal/config/shell/login
